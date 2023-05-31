@@ -48,7 +48,7 @@ for k, v in pairs(_G.GetPlayers()) do
     end
 end
 ```
-## Bomber chaoes
+## Bomber chaos
 
 Spawn bombs at all the players except the owner
 
@@ -70,7 +70,7 @@ end
 
 ## All together
 
-Staying together is better than being seperated!
+Staying together is better than being separated!
 
 ```lua
 -- Owner username
@@ -97,6 +97,42 @@ local waittime = 1
 for i = 1, num do
     _G.Shout(i)
     wait(waittime)
+end
+
+```
+
+## Race
+
+(Functions extremely weird)
+
+```lua
+-- Enter owner username
+local owner = ""
+local part = _G.CreatePart(_G.GetPlayerPos(owner), Vector3.new(130, 2, 700), _G.World)
+part.Anchored = true
+
+
+_G.Shout("To everyone in this server get ahead " .. owner .. " in the race!")
+
+_G.TeleportAllPlayers(_G.GetPlayerCF(owner))
+
+for k, v in pairs(_G.GetPlayers()) do
+   local human =  v.Character:FindFirstChildOfClass("Humanoid")
+
+   if human then
+        human.WalkSpeed = 0
+   end
+end
+
+wait(3)
+_G.Shout("GO!")
+
+for k, v in pairs(_G.GetPlayers()) do
+   local human =  v.Character:FindFirstChildOfClass("Humanoid")
+
+   if human then
+        human.WalkSpeed = 45
+   end
 end
 
 ```
